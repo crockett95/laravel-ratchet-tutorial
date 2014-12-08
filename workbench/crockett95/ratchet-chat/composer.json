@@ -1,0 +1,25 @@
+{
+    "name": "crockett95/ratchet-chat",
+    "description": "",
+    "authors": [
+        {
+            "name": "Steve Crockett",
+            "email": "crockett95@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "cboden/ratchet": "~0.3",
+        "symfony/console": "~2.6"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Crockett95\\RatchetChat\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

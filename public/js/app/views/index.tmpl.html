@@ -1,0 +1,33 @@
+<div class="chat-outer panel panel-default">
+    <div class="panel-body chat">
+        <div class="media chat-message" ng-repeat="message in messages">
+            <div class="media-body">
+                <h4 class="media-title" ng-bind="getName(message.user)"></h4>
+                <p ng-bind="message.message"></p>
+            </div>
+        </div>
+    </div>
+    <form ng-submit="sendMessage()" class="chat-form">
+        <div class="input-group">
+            <input ng-model="messageBox" type="text" class="form-control">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-success">
+                    Send
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<hr>
+
+<form class="well" ng-hide="nameSet" ng-submit="setName()">
+    <div class="input-group">
+        <input type="text" ng-model="name" class="form-control">
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary">
+                Set Name
+            </button>
+        </span>
+    </div>
+</form>
