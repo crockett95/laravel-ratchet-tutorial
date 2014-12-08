@@ -76,8 +76,10 @@ class Serve extends Command
         $this->chat->getEmitter()->on('message', $message);
 
         $name = function (UserInterface $user, $message) {
+            $name = $this->getUserName($user);
+
             $this->line(
-                "<info>User changed their name to: </info>" .
+                "<info>$name changed their name to: </info>" .
                 "<comment>$message</comment>" .
                 "<info>.</info>"
             );

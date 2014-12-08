@@ -47,14 +47,9 @@ define([
                     return messages;
                 },
                 sendMessage: function (message) {
-                    messages.push({
-                        user: 0,
-                        message: message
-                    });
                     sendWsMessage('message', message);
                 },
                 setUsername: function (name) {
-                    username = name;
                     sendWsMessage('name', name);
                 },
                 getUsername: function (id) {

@@ -2,8 +2,8 @@
     <div class="panel-body chat">
         <div class="media chat-message" ng-repeat="message in messages">
             <div class="media-body">
-                <h4 class="media-title" ng-bind="getName(message.user)"></h4>
-                <p ng-bind="message.message"></p>
+                <h4 class="media-heading" ng-bind="getName(message.user)"></h4>
+                <span ng-bind="message.message"></span>
             </div>
         </div>
     </div>

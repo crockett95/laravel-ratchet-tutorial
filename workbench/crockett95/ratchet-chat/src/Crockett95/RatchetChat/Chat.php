@@ -152,38 +152,29 @@ class Chat implements ChatInterface
         $message = json_decode($message);
 
         switch ($message->type) {
-            case 'name': {
+            case 'name':
                 $user->setName($message->data);
-                $this->emitter->emit('name', [
+
+            case 'message':
+                $this->emitter->emit($message->type, [
                     $user,
                     $message->data
                 ]);
 
+                foreach ($this->users as $other) {
+                    $other->getSocket()->send(
+                        json_encode([
+                            'user' => [
+                                'id' => $user->getId(),
+                                'name' => $user->getName()
+                            ],
+                            'message' => $message
+                        ])
+                    );
+                }
                 break;
-            }
-            case 'message': {
-                $this->emitter->emit('message', [
-                    $user,
-                    $message->data
-                ]);
-
-                break;
-            }
         }
 
-        foreach ($this->users as $other) {
-            if ($user === $other) continue;
-
-            $other->getSocket()->send(
-                json_encode([
-                    'user' => [
-                        'id' => $user->getId(),
-                        'name' => $user->getName()
-                    ],
-                    'message' => $message
-                ])
-            );
-        }
     }
 
 }
